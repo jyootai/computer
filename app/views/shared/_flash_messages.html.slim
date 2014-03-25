@@ -1,0 +1,5 @@
+- [:success, :info, :warning, :danger].each do |type|
+  - if flash[type]
+    .alert class="alert-#{type}"
+      a.close data-dismiss="alert"
+      = flash[type]
