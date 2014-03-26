@@ -30,4 +30,11 @@ class ApplicationController < ActionController::Base
     cookies.delete(:remember_token)
   end
 
+  def required_login
+    unless logged_in?
+      flash[:warning]= '请先登录'
+      redirect_to login_url
+    end
+  end
+
 end

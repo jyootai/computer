@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user=User.find_by(username: params[:username].downcase)
     if user && user.authenticate(params[:password])
       sign_in user
-      redirect_to user
+      redirect_to settings_profile_path
 
     else
       flash.now[:warning]= '无效的用户名/密码'
