@@ -1,0 +1,22 @@
+- resource = form.object
+- resource_name = resource.class.name.downcase
+- write_pane_id = "write_#{resource_name}_#{resource.try(:id) || 'new'}"
+- preview_pane_id = "preview_#{resource_name}_#{resource.try(:id) || 'new'}"
+- tabIndex ||= nil
+
+.markdown-area
+  ul.nav.nav-tabs
+    li.active
+      a href="##{write_pane_id}" data-toggle="tab"
+        p  编辑
+    li
+      a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview"
+        p 预览
+  .tab-content
+   .tab-pane.active id=write_pane_id
+     = form.text_area name, class: 'form-control', data: { behaviors: 'autosize' }, tabIndex: tabIndex
+     .file-upload
+       = file_field_tag :file, multiple: true, tabIndex: 99
+       a 上传图片
+   .tab-pane id=preview_pane_id
+      article.preview
