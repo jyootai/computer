@@ -11,4 +11,18 @@
  *= require_self
  *= require_tree .
  */
-@import 'bootstrap'
+$font-size-base: 15px;
+@import "bootstrap";
+@import "markdown";
+@import "topics";
+.markdown-area {
+  .file-upload input[type=file]{
+    position: absolute;
+    width: 100%;
+    margin-top: 0;
+    bottom: 0;
+    cursor: pointer;
+    }
+}
+
+
