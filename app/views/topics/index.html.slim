@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-9
+      .post
+        .post-heading
+          -if @topic.any?
+            =render @topic
+          -else
+            p 没有帖子
+  = will_paginate @topic
+

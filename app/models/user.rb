@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+ has_many :topics 
   has_secure_password
   before_save{self.email=email.downcase}
   before_save{self.username=username.downcase}

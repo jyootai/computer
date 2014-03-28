@@ -4,6 +4,18 @@ Computer::Application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
   get 'login',  to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy'
+  root  to: 'topics#index'
+  post 'markdown/preview', to: 'markdown#preview'
+  namespace :settings do
+    resource :profile, only: [:show, :update]
+  end
+   
+   resources :topics do
+     collection do
+       get 'new'
+       post 'create', as: 'post'
+     end
+   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

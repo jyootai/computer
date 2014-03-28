@@ -43,6 +43,12 @@ gem 'therubyracer'
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'redcarpet', '~>3.0.0'
+gem 'rouge', '~>1.3.1'
+gem 'nokogiri', '~> 1.6.1'
+#Paging
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

@@ -1,0 +1,12 @@
+= form_for @topic, url: post_topics_path do |f|
+  =render 'shared/flash_messages'
+  .row
+    .col-md-9
+      .form-group
+        =f.text_field :title,  placeholder: '标题', class: 'form-control'
+  .form-group
+    =markdown_area f, :body
+  .form-group
+    =f.submit '发表', class: 'btn btn-success'
+
+
