@@ -49,7 +49,9 @@ gem 'nokogiri', '~> 1.6.1'
 #Paging
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
-
+# File upload
+gem 'carrierwave', '~> 0.9.0'
+ gem 'mini_magick', '~> 3.7.0'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 

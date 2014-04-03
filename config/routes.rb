@@ -1,73 +1,123 @@
-Computer::Application.routes.draw do
-  resources :users
+class AdminConstraint
+  def self.matches?(request)
+    if request.session[:user_id]
+      user = User.find request.session[:user_id]
+      user && user.admin?
+    end
+  end
+end
+
+Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
-  get 'login',  to: 'sessions#new', as: 'login'
+  get 'login', to: 'sessions#new', as: 'login'
+  post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-  root  to: 'topics#index'
+
   post 'markdown/preview', to: 'markdown#preview'
+
+  resources :users, only: [:create] do
+    collection do
+      get :check_email
+      get :check_username
+    end
+  end
+
+  concern :commentable do
+    resources :comments, only: [:create]
+  end
+
+  concern :likeable do
+    resource :like, only: [:create, :destroy]
+  end
+
+  concern :subscribable do
+    resource :subscription, only: [:update, :destroy]
+  end
+
+  resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable] do
+    collection do
+      get 'new'
+      post 'create', as: 'post'
+      get 'categoried/:category_id', to: 'topics#index', as: :categoried
+      get 'search'
+    end
+
+    member do
+      delete :trash
+    end
+  end
+
+  resources :comments, only: [:edit, :update], concerns: [:likeable] do
+    member do
+      get :cancel
+      delete :trash
+    end
+  end
+
+  resources :notifications, only: [:index, :destroy] do
+    collection do
+      post :mark
+      delete :clear
+    end
+  end
+
+  resources :attachments, only: [:create]
+
+  root 'topics#index'
+
+  scope path: '~:username', module: 'users', as: 'user' do
+    resources :topics, only: [:index]
+    resources :comments, only: [:index]
+    resources :likes, only: [:index, :destroy]
+
+    root to: 'topics#index'
+  end
+
   namespace :settings do
     resource :profile, only: [:show, :update]
   end
-   
-   resources :topics do
-     collection do
-       get 'new'
-       post 'create', as: 'post'
-     end
-   end
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  namespace :admin do
+    root to: 'dashboard#show'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+    resources :users, only: [:index, :show, :update, :destroy] do
+      collection do
+        get :locked
+      end
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+      member do
+        patch :lock
+        delete :lock, action: 'unlock'
+      end
+    end
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+    resources :categories, except: [:edit]
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    resources :topics, only: [:index, :show, :update] do
+      collection do
+        get :trashed
+      end
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+      member do
+        delete :trash
+        patch :restore
+      end
+    end
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+    resources :comments, only: [:index, :show, :update] do
+      collection do
+        get :trashed
+      end
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+      member do
+        delete :trash
+        patch :restore
+      end
+    end
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+    resources :attachments, only: [:index, :destroy]
+  end
+
+
 end
