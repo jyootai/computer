@@ -1,0 +1,8 @@
+- cache [comment, locale] do
+  li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.user_id
+      .list-group-item-heading
+          b = comment.user.name
+          '
+          = "@#{comment.user.username}"
+      article.comment-body
+        = markdown_format comment.body

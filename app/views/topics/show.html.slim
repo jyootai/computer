@@ -11,3 +11,40 @@
               = "@#{@topic.user.username}"
             article.comment-body
               = markdown_format @topic.body
+      .panel#comments
+        .panel-heading
+          h3.panle-title
+           halm_safe 评论
+        .panle-body
+          ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
+             - if @comments.any?
+               = render @comments
+             - else
+               li.list-group-item.text-center.text-muted.empty-message
+                 halm_safe 还没有评论
+      .panel
+        .panel-body
+          - if logged_in?
+             .list-group.list-group-computer
+               .list-group-item.comment
+                 .list-group-item-content
+                   .list-group-item-content
+                     b = current_user.name
+                     '
+                     ="@#{current_user.username}"
+                 = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true  do |f|
+                   .form-group
+                     = markdown_area f, :body
+                   =f.submit '发表评论', class: 'btn btn-success'
+          - else
+            a href=signup_path(return_to: request.fullpath)
+              halm_safe 注册
+            '
+            halm_safe 或者
+            '  
+            a href=login_path(return_to: request.fullpath)
+              halm_safe 登录
+            '
+            halm_safe 在评论
+
+

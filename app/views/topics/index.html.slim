@@ -3,6 +3,7 @@
     .col-md-9
       .post
         .post-heading
+          =render 'shared/flash_messages'
           -if @topic.any?
             =render @topic
           -else
