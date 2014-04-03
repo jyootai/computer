@@ -1,13 +1,15 @@
 class SessionsController < ApplicationController
+  before_action :no_logged, only: [:new, :create]
   def new
-        
+    store_location params[:return_to] 
   end
   
   def create
     user=User.find_by(username: params[:username].downcase)
     if user && user.authenticate(params[:password])
       sign_in user
-      redirect_to root_path
+      remember_me
+      redirect_back_or_default root_path
 
     else
       flash.now[:warning]= '无效的用户名/密码'

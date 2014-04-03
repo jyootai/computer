@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_action :no_logged, only: [:new, :create]
   def new
+    store_location params[:return_to]
     @user=User.new
   end
 

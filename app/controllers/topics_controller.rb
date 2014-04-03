@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
-  before_action :required_login, except: [:index]
+  before_action :required_login, only: [:new, :create]
+  before_action :find_topic, only: [:edit, :update]
   def new
     @topic = Topic.new
   end
@@ -10,6 +11,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find params[:id]
+    @comments=@topic.comments.includes(:user).order(id: :asc)
+
   end
 
   def create
@@ -26,4 +29,9 @@ class TopicsController < ApplicationController
 
   def update
   end
+
+  private
+    def find_topic
+      @topic=current_user.topics.find params[:id]
+    end
 end
