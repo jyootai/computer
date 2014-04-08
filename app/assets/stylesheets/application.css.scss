@@ -13,6 +13,7 @@
  */
 $font-size-base: 15px;
 @import "bootstrap";
+@import "highlight";
 @import "markdown";
 @import "topics";
 .markdown-area {
@@ -23,6 +24,72 @@ $font-size-base: 15px;
     bottom: 0;
     cursor: pointer;
     }
-}
+  }
+body{
+  background-color:#eee;
+  }
+.navbar {
+  min-height:8px;
+  background-color:white;
+  height:41px;
+  line-height:40px;
+  }
 
-
+.navbar-header{
+  width:100%;
+  }
+.new-post{
+  margin-left:40%;
+  }
+.navbar-nav {
+  margin-top:-45px;
+  margin-left:80%;
+  li{
+    a{
+      color:black !important;
+      &:hover{
+        color:green !important;	      
+        }
+      }
+    }
+  }
+ .list-group-item-heading{
+  a{
+    color:black;
+    }
+  }
+nav{
+  a{	
+    color:#0069D6;
+    &:hover{
+      color:#0069D6;
+    }
+  }
+  }
+.pagination{
+  margin-left:30%;
+  background:#f5f5f5;
+  margin-bottom:3em;
+  }
+.panel-heading {
+  background:#f5f5f5;
+  }
+.main {
+  .container{
+    padding-bottom:2em;
+    margin-top:4em;
+    background:white;
+    width:40%;
+  }
+  textarea{ 
+    resize: vertical;
+    }
+  }
+.signup-heading{
+  margin-bottom:1em;
+  border-bottom:1px solid #bbb;
+  }
+.login-heading{
+  margin-bottom:1em;
+  border-bottom:1px solid #bbb;
+  }

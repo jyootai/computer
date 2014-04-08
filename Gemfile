@@ -47,8 +47,7 @@ gem 'redcarpet', '~>3.0.0'
 gem 'rouge', '~>1.3.1'
 gem 'nokogiri', '~> 1.6.1'
 #Paging
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
+gem 'kaminari', '~> 0.15.1'
 # File upload
 gem 'carrierwave', '~> 0.9.0'
  gem 'mini_magick', '~> 3.7.0'

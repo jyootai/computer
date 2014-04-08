@@ -4,13 +4,13 @@
       .panel
         .panel-heading
           h1.panel-title=@topic.title
+          .text-muted
+            = "@#{@topic.user.username}"
         .panel-body
           - cache [@topic, locale] do
-            .list-group-item.comment data-creator-id= @topic.user_id
-
-              = "@#{@topic.user.username}"
-            article.comment-body
-              = markdown_format @topic.body
+            .list-group-item
+              article.comment-body
+                = markdown_format @topic.body
       .panel#comments
         .panel-heading
           h3.panle-title

@@ -6,7 +6,8 @@ class TopicsController < ApplicationController
   end
 
   def index
-     @topic = Topic.paginate(page: params[:page], per_page: 10)
+  #   @topic = Topic.paginate(page: params[:page], per_page: 10)
+    @topics = Topic.order(:id).page params[:page]
   end
 
   def show

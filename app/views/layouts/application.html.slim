@@ -2,29 +2,33 @@ doctype html
 html
   head
     title Computer| #{ yield(:title)}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true 
     = javascript_include_tag "application", "data-turbolinks-track" => true 
     = csrf_meta_tags 
   body
     nav.navbar.navbar-static-top.navbar-inverse
       .container
-        .row
-          .post
-            .post-body
-              .pull-right
-                a.btn.btn-info href=new_topic_path
-                  html_half 创建新帖
-          .navbar-header
-            - if logged_in?
-              ul.nav.navbar-nav.navbar-right
+        .navbar-header
+          .row
+            .pull-left
+              a.logo.img-responsive href=root_path
+                = image_tag "logo1.png",size: "40x37"
+            .new-post
+              a.btn.btn-success href=new_topic_path
+                html_half 创建新帖
+            ul.nav.navbar-nav.navbar-right
+              - if logged_in?
                 li
-                  =link_to '退出',logout_path, method: 'delete'
-            - else
-              ul.nav.navbar-nav.navbar-right
+                  a href=logout_path data-method="delete"
+                    haml_half 退出
+              - else
                 li
-                  =link_to '注册',signup_path
+                  a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath)) 
+                    haml_half 注册 
                 li
-                  =link_to '登录',login_path
+                  a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                    haml_half 登录
 
   = yield
 
