@@ -1,9 +1,10 @@
 - provide(:title, '发贴')
-.container
-  .row
-    .col-md-9
-      .topic
-        .topic-heading
-          h3.topic-title 发表新帖
-        .topic-body
-          = render 'form', topic: @topic
+.main-post
+  .container
+    .row
+      .col-md-12
+        .topic
+          .topic-heading
+            h3.topic-title 发表新帖
+          .topic-body
+            = render 'form', topic: @topic
