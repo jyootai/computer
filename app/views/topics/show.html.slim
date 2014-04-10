@@ -6,11 +6,15 @@
           h1.panel-title=@topic.title
           .text-muted
             = "@#{@topic.user.username}"
+          .list-group-item-avatar.comment-topic
+            img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
         .panel-body
           - cache [@topic, locale] do
             .list-group-item
               article.comment-body
                 = markdown_format @topic.body
+        .topic-share
+          =  social_share_button_tag(@topic.title) 
       .panel#comments
         .panel-heading
           h3.panle-title

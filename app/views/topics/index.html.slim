@@ -1,12 +1,13 @@
-.container
-  .row
-    .col-md-9
-      .post
-        .post-heading
-          =render 'shared/flash_messages'
-          -if @topics.any?
-            =render @topics
-          -else
-            p 没有帖子
-  = paginate @topics, :theme=> 'computer_theme'
+.root-index
+  .container
+    .row
+      .col-md-9
+        .post
+          .post-heading
+            =render 'shared/flash_messages'
+            -if @topics.any?
+              =render @topics
+            -else
+              p 没有帖子
+        = paginate @topics, :theme=> 'computer_theme'
 

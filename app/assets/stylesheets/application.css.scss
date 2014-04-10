@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require social-share-button
  *= require_tree .
  */
 $font-size-base: 15px;
@@ -102,3 +103,32 @@ nav{
     width:50%;
   }
 }
+.list-index{
+  padding-left:4em;
+  margin-top:-3em;
+  }
+.root-index{
+  margin-top:3em;
+  }
+.post-personal{
+  padding-top:17px;
+  padding-bottom:17px;
+  }
+.comment-topic{
+  margin-left:50em;
+  margin-top:-3em;
+  }
+.comment-view{
+  .text-muted{
+    margin-left:4em;
+    margin-top:-3em;
+    }
+  .comment-body{
+    padding-top:1em;
+    margin-left:4em;
+    }
+  }
+.topic-share{
+  margin-left:1em;
+  padding-bottom:1em;
+  }

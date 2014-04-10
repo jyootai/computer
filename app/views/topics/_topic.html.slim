@@ -1,5 +1,8 @@
 - cache [topic, locale] do
-   .list-group-item
+  .list-group-item.post-personal
+    .list-group-item-avatar 
+      img.img-rounded alt="avatar" src=topic.user.avatar.normal.url
+    .list-index  
       .list-group-item-heading
         a href=topic_path(topic)
           b = topic.title

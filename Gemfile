@@ -50,7 +50,11 @@ gem 'nokogiri', '~> 1.6.1'
 gem 'kaminari', '~> 0.15.1'
 # File upload
 gem 'carrierwave', '~> 0.9.0'
- gem 'mini_magick', '~> 3.7.0'
+gem 'mini_magick', '~> 3.7.0'
+# Gravatar
+gem 'gravtastic', '~> 3.2.6'
+#Share
+gem 'social-share-button', '0.1.6'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
