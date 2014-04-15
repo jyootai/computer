@@ -9,7 +9,7 @@
           b = topic.title
       .text-muted
         .info
-          a href=topic.user
+          a href=user_link(topic.user)
             = topic.user.username
           = ' · '
           = timeago(topic.created_at)
