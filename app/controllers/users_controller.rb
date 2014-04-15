@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user=User.new params.require(:user).permit(:username,:email,:name,:password,
+    @user=User.new params.require(:user).permit(:username,:email,:password,
 					       :password_confirmation)
     if @user.save
       sign_in @user

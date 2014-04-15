@@ -1,4 +1,4 @@
-- provide(:title, '更改个人资料')
+- provide(:title, t('.profile_update'))
 .settings-profile
   .container
     .row
@@ -6,47 +6,51 @@
         .profile
           .profile-heading
             h3.profile-title
-              p 更改个人资料
+              = t('.profile_update')
           .profile-body
             =form_for @user, url: settings_profile_path do |f|
               =render 'shared/flash_messages'
               .row
-                =f.label '姓名',class: 'control-label col-sm-2'
+                =f.label :name,class: 'control-label col-sm-2'
                 .col-sm-5
                   =f.text_field :name, class: 'form-control'
               br
               .row
-                =f.label '专业', class: 'control-label col-sm-2'
+                =f.label :professional, class: 'control-label col-sm-2'
                 .col-sm-5
                   =f.select :professional, I18n.available_locales.map { |locale| [t("locales.#{locale}"), locale] }, { },class: 'form-control'
               br    
               .row
-                =f.label '邮箱', class: 'control-label col-sm-2'
+                =f.label :email, class: 'control-label col-sm-2'
                 .col-sm-5
                   =f.text_field :email, disabled: 'disabled',class: 'form-control '
-                  p.help-block
-                    haml_safe * 此项不可更改！
+                  p.text-danger
+                    = '* '
+                    = t('.not_modify')
               br
               .row
-                =f.label '个人主页', class: 'control-label col-sm-2'
+                =f.label :bio, class: 'control-label col-sm-2'
                 .col-sm-5
                   =f.text_field :bio, class: 'form-control'
               br    
               .row
-                =f.label '新密码', class: 'control-lable col-sm-2'
+                =f.label :password, class: 'control-lable col-sm-2'
                 .col-sm-5
                   =f.password_field :password, class: 'form-control'
               br
               .row
-                =f.label '确认密码', class: 'control-label col-sm-2'
+                =f.label :password_confirmation, class: 'control-label col-sm-2'
                 .col-sm-5
                   =f.password_field :password_confirmation, class: 'form-control'
               br
-              .row
-                =label_tag '当前密码',nil,class: 'control-label col-sm-2'
+              .row.has-error
+                =label_tag :current_password,t('.current_password'),class: 'control-label col-sm-2'
                 .col-sm-5
                   =password_field_tag :current_password,nil, class: 'form-control'
+                  p.text-danger
+                    = '*'
+                    = t('.must')
               br    
               .row 
                 .col-sm-8
-                  = f.submit '修改', class: 'btn btn-primary'
+                  = f.submit t('.save_changes'), class: 'btn btn-primary'

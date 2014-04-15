@@ -86,7 +86,7 @@ Rails.application.routes.draw do
 
     resources :attachments, only: [:index, :destroy]
   end
-  resources :users, only: [:index, :show, :update, :destroy] ,:path=>'' do
+  resources :users, only: [:index, :show, :update, :destroy,:create] ,:path=>'' do
     member do
       get :topics
     end

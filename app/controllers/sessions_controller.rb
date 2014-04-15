@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_back_or_default root_path
 
     else
-      flash.now[:warning]= '无效的用户名/密码'
+      flash.now[:warning]=  I18n.t('sessions.flashes.invalid')
       render 'new'
     end
   end

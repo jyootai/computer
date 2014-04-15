@@ -1,3 +1,4 @@
+- provide(:title, "#{@topic.title}")
 .container
   .row
     .col-md-9
@@ -23,14 +24,14 @@
       .panel#comments
         .panel-heading
           h3.panle-title
-           halm_safe 评论
+            =t('.comment')
         .panle-body
           ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
              - if @comments.any?
                = render @comments
              - else
                li.list-group-item.text-center.text-muted.empty-message
-                 halm_safe 还没有评论
+                 =t('.no_comment')
       .panel
         .panel-body
           - if logged_in?
@@ -44,16 +45,16 @@
                  = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true  do |f|
                    .form-group
                      = markdown_area f, :body
-                   =f.submit '发表评论', class: 'btn btn-success'
+                   =f.submit t('.post_comment'), class: 'btn btn-success'
           - else
             a href=signup_path(return_to: request.fullpath)
-              halm_safe 注册
+              =t('.signup')
             '
-            halm_safe 或者
+            = t('.or')
             '  
             a href=login_path(return_to: request.fullpath)
-              halm_safe 登录
+              =t('.login')
             '
-            halm_safe 在评论
+            =t('.will_comment')
 
 

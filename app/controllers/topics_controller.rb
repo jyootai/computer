@@ -22,7 +22,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to root_path
     else
-      flash[:danger]= '请填写完整，标题和肉容不能为空'
+      flash.now[:danger]= I18n.t('topics.flashes.failed_post')
       render 'new'
     end
        

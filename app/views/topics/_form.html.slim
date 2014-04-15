@@ -3,10 +3,10 @@
   .row
     .col-md-9
       .form-group
-        =f.text_field :title,  placeholder: '标题', class: 'form-control'
+        =f.text_field :title,  placeholder: t('.title'), class: 'form-control'
   .form-group
     =markdown_area f, :body
   .form-group
-    =f.submit '发表', class: 'btn btn-success'
+    =f.submit t('.post'), class: 'btn btn-success'
 
 

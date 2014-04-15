@@ -1,10 +1,11 @@
-- provide(:title, '发贴')
+- provide(:title, t('.post'))
 .main-post
   .container
     .row
       .col-md-12
         .topic
           .topic-heading
-            h3.topic-title 发表新帖
+            h3.topic-title 
+              =t('.new_post')
           .topic-body
             = render 'form', topic: @topic

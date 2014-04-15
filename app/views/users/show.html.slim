@@ -5,9 +5,10 @@
   .container
     .row
       .user-show-recent-topics
-      h2.title.text-center 最近发表的帖子
+      h2.title.text-center 
+        = t('.recent_topic')
       - if @topics.any?
         = render partial: 'topics/topic', collection: @topics
       - else
-        p 暂时还未发贴
+        = t('recent_not_post')
 

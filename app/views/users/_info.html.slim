@@ -12,14 +12,20 @@
         strong #{@user.name}
       - if !@user.professional.blank?
         li 
-          label 专业 :
+          label
+            = t('.professional')
+            = ':'
           span #{@user.professional}
       - if !@user.bio.blank?
         li
-          label 个人主页 :
+          label 
+            =t('.bio')
+            = ':'
           span #{render_user_personal_bio(@user)}
       li
-        label 加入时间 :
+        label 
+          =t('.join_time')
+          = ':'
         span #{render_user_join_time(@user)}
   .col-md-4.col-md-offset-4
     .user-profile-avatar

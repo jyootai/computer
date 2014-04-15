@@ -16,7 +16,7 @@ html
                 = image_tag "logo1.png",size: "40x37"
             .new-post
               a.btn.btn-success href=new_topic_path
-                html_half 创建新帖
+                = t('.topic_new')
             ul.nav.navbar-nav.navbar-right
               - if logged_in?
                   a.dropdown-toggle data-toggle="dropdown" href="#"
@@ -26,25 +26,25 @@ html
                   ul.dropdown-menu.dropdown-menu-right
                     li
                       a href=user_path(current_user.username)
-                        halm_safe 个人资料
+                        = t('.profile')
                     li.divider     
                     li    
                       a href="#"
-                        halm_safe 记事本
+                        = t('.note')
                     li
                       a href=settings_profile_path
-                        halm_safe 设置
+                        =t('.settings')
                     li.divider    
                     li
                       a href=logout_path data-method="delete"
-                        haml_half 退出
+                        =t('.logout')
               - else
                 li
                   a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath)) 
-                    haml_half 注册 
+                    =t('.signup')
                 li
                   a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
-                    haml_half 登录
+                    =t('.login')
 
   = yield
 

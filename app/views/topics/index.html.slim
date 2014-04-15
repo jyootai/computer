@@ -8,6 +8,7 @@
             -if @topics.any?
               =render @topics
             -else
-              p 没有帖子
+              p
+                =t('.no_post')
         = paginate @topics, :theme=> 'computer_theme'
 

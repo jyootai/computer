@@ -7,7 +7,7 @@ class Settings::ProfilesController < Settings::ApplicationController
   def update
     if @user.update_attributes params.require(:user).permit(:name, :email, :password,:professional,
 							    :bio, :password_confirmation)
-      flash[:success]= '资料修改成功'
+      flash[:success]=  I18n.t('settings.flashes.successfully_updated')
       redirect_to settings_profile_path
     else
       render 'show'

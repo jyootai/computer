@@ -1,4 +1,4 @@
-- provide(:title, '注册')
+- provide(:title, t('.signup'))
 .main
   .container
     .row
@@ -6,27 +6,24 @@
         .signup
           .signup-heading
             h3.signup-title
-              p 注册
+              =t('.signup')
           .signup-body
             =form_for @user  do |f|
               =render 'shared/error_messages',object: @user
               .form-group
-                =f.label '用户名', class: 'control-label'
-                =f.text_field :username, placeholder: '输入用户名',class: 'form-control'
+                =f.label :username, class: 'control-label'
+                =f.text_field :username, placeholder: t('.your_username'),class: 'form-control'
               .form-group
-                =f.label '邮箱', class: 'control-label'
-                =f.text_field :email, placeholder: '输入邮箱', class: 'form-control'
+                =f.label :email, class: 'control-label'
+                =f.text_field :email, placeholder: t('.your_email'), class: 'form-control'
               .form-group
-                =f.label '姓名',  class: 'control-label'
-                =f.text_field :name, placeholder: '输入姓名', class: 'form-control'
+                =f.label :password, class: 'control-label'
+                =f.password_field :password, placeholder: t('.your_password'), class: 'form-control'
               .form-group
-                =f.label '密码', class: 'control-label'
-                =f.password_field :password, placeholder: '输入密码', class: 'form-control'
+                =f.label :password_confirmation,class: 'control-label'
+                =f.password_field :password_confirmation,placeholder: t('.password_confirmation'),class: 'form-control'
               .form-group
-                =f.label '确认密码',class: 'control-label'
-                =f.password_field :password_confirmation,placeholder: '重复你的密码',class: 'form-control'
-              .form-group
-              =f.submit '注册',class: 'btn btn-success'
+              =f.submit t('.create_account'),class: 'btn btn-success'
        
 
 

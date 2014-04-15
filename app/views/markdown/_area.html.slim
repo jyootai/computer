@@ -8,15 +8,16 @@
   ul.nav.nav-tabs
     li.active
       a href="##{write_pane_id}" data-toggle="tab"
-        p  编辑
+        =t('.edit')
     li
       a href="##{preview_pane_id}" data-toggle="tab" data-behaviors="preview"
-        p 预览
+        =t('.preview')
   .tab-content
    .tab-pane.active id=write_pane_id
      = form.text_area name, class: 'form-control', data: { behaviors: 'autosize' }, tabIndex: tabIndex
      .file-upload
        = file_field_tag :file, multiple: true, tabIndex: 99
-       a 上传图片
+       a
+         =t('.upload_picture')
    .tab-pane id=preview_pane_id
       article.preview
