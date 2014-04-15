@@ -4,10 +4,15 @@
       .panel
         .panel-heading
           h1.panel-title=@topic.title
-          .text-muted
-            = "@#{@topic.user.username}"
+          .text-muted.topic-show
+            .info
+              a href=user_link(@topic.user)
+                = "@#{@topic.user.username}"
+              = ' . '
+              =timeago(@topic.created_at)
           .list-group-item-avatar.comment-topic
-            img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
+            a href=user_link(@topic.user)
+              img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
         .panel-body
           - cache [@topic, locale] do
             .list-group-item

@@ -2,7 +2,7 @@ doctype html
 html
   head
     title Computer| #{ yield(:title)}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true 
     = javascript_include_tag "application", "data-turbolinks-track" => true 
     = csrf_meta_tags 
@@ -19,9 +19,25 @@ html
                 html_half 创建新帖
             ul.nav.navbar-nav.navbar-right
               - if logged_in?
-                li
-                  a href=logout_path data-method="delete"
-                    haml_half 退出
+                  a.dropdown-toggle data-toggle="dropdown" href="#"
+                    =current_user.username
+                    '
+                    b.caret
+                  ul.dropdown-menu.dropdown-menu-right
+                    li
+                      a href=user_path(current_user.username)
+                        halm_safe 个人资料
+                    li.divider     
+                    li    
+                      a href="#"
+                        halm_safe 记事本
+                    li
+                      a href=settings_profile_path
+                        halm_safe 设置
+                    li.divider    
+                    li
+                      a href=logout_path data-method="delete"
+                        haml_half 退出
               - else
                 li
                   a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath)) 

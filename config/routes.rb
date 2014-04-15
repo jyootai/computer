@@ -1,12 +1,3 @@
-class AdminConstraint
-  def self.matches?(request)
-    if request.session[:user_id]
-      user = User.find request.session[:user_id]
-      user && user.admin?
-    end
-  end
-end
-
 Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
@@ -16,12 +7,6 @@ Rails.application.routes.draw do
 
   post 'markdown/preview', to: 'markdown#preview'
 
-  resources :users, only: [:create] do
-    collection do
-      get :check_email
-      get :check_username
-    end
-  end
 
   concern :commentable do
     resources :comments, only: [:create]
@@ -66,13 +51,6 @@ Rails.application.routes.draw do
 
   root 'topics#index'
 
-  scope path: '~:username', module: 'users', as: 'user' do
-    resources :topics, only: [:index]
-    resources :comments, only: [:index]
-    resources :likes, only: [:index, :destroy]
-
-    root to: 'topics#index'
-  end
 
   namespace :settings do
     resource :profile, only: [:show, :update]
@@ -81,16 +59,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
 
-    resources :users, only: [:index, :show, :update, :destroy] do
-      collection do
-        get :locked
-      end
-
-      member do
-        patch :lock
-        delete :lock, action: 'unlock'
-      end
-    end
 
     resources :categories, except: [:edit]
 
@@ -118,6 +86,10 @@ Rails.application.routes.draw do
 
     resources :attachments, only: [:index, :destroy]
   end
-
+  resources :users, only: [:index, :show, :update, :destroy] ,:path=>'' do
+    member do
+      get :topics
+    end
+  end
 
 end

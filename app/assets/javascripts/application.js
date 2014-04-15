@@ -13,7 +13,18 @@
 //= require jquery_ujs
 //= require social-share-button
 //= require turbolinks
+//= require markdown_area
 //= require bootstrap
-//= require_tree .
+//= require jquery.timeago
+//= require jquery.timeago.settings
+//= require_self
+//$(document).ready(function(){  
+//  $("abbr.timeago").timeago();
+//});
 
-
+ 
+$(document).ready(function(){
+  $("abbr.timeago").timeago();
+});$(window).bind('page:change', function() {
+    $("abbr.timeago").timeago();
+});

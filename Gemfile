@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# i18n
+gem 'rails-i18n', '~> 4.0.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -35,8 +37,6 @@ end
 gem 'bootstrap-sass', '~>3.1.0'
 #Slim template
 gem 'slim', '~>2.0.2'
-gem 'execjs'
-gem 'therubyracer'
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt-ruby', '~> 3.1.2'
@@ -57,6 +57,5 @@ gem 'gravtastic', '~> 3.2.6'
 gem 'social-share-button', '0.1.6'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
 # Use debugger
 # gem 'debugger', group: [:development, :test]

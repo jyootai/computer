@@ -5,7 +5,8 @@ class Settings::ProfilesController < Settings::ApplicationController
   end
 
   def update
-    if @user.update_attributes params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    if @user.update_attributes params.require(:user).permit(:name, :email, :password,:professional,
+							    :bio, :password_confirmation)
       flash[:success]= '资料修改成功'
       redirect_to settings_profile_path
     else

@@ -1,11 +1,15 @@
 - cache [topic, locale] do
   .list-group-item.post-personal
     .list-group-item-avatar 
-      img.img-rounded alt="avatar" src=topic.user.avatar.normal.url
+      a href=user_link(topic.user)
+        img.img-rounded alt="avatar" src=topic.user.avatar.normal.url
     .list-index  
       .list-group-item-heading
         a href=topic_path(topic)
           b = topic.title
       .text-muted
-        = topic.user.username
-        = ' · '
+        .info
+          a href=topic.user
+            = topic.user.username
+          = ' · '
+          = timeago(topic.created_at)

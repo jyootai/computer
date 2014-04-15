@@ -1,8 +1,13 @@
 - cache [comment, locale] do
   li.list-group-item.comment id="comment-#{comment.id}" data-creator-id=comment.user_id
-    img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
+    a href=user_link(comment.user)
+      img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
     .comment-view
       .text-muted  
-        = comment.user.username
+        .info
+          a href=user_link(comment.user)
+            = comment.user.username
+          = ' . '
+          =timeago(comment.created_at)
       article.comment-body
         = markdown_format comment.body

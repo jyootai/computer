@@ -32,6 +32,7 @@ body{
 .navbar {
   min-height:8px;
   background-color:white;
+  border-color:rgba(153, 153, 153, 0.4);
   height:41px;
   line-height:40px;
   }
@@ -45,16 +46,28 @@ body{
 .navbar-nav {
   margin-top:-45px;
   margin-left:80%;
-  li{
     a{
-      color:black !important;
-      &:hover{
-        color:green !important;	      
+        color:#444 !important;
+        display:block;
+        float: none;
+        text-decoration:none;
+	&:hover{
+	  color:black !important ;
+	  text-decoration: none;
         }
+     }
+ }
+.dropdown-menu{
+  li{
+     a{
+       &:hover{     
+      background:#038543;
+      color:white !important;
       }
     }
   }
- .list-group-item-heading{
+  }
+.list-group-item-heading{
   a{
     color:black;
     }
@@ -74,6 +87,19 @@ nav{
   }
 .panel-heading {
   background:#f5f5f5;
+  }
+.settings-profile{
+  .container{
+    background:white;
+    width:55%;
+    margin-top:2em;
+    padding-bottom:2em;
+    margin-bottom:2em;
+    .profile-heading{
+      margin-bottom:1em;
+      border-bottom:1px solid #bbb;
+      }
+    }
   }
 .main {
   .container{
@@ -131,4 +157,57 @@ nav{
 .topic-share{
   margin-left:1em;
   padding-bottom:1em;
+  }
+.info{
+  font-size:12px;
+  }
+.topic-show{
+  padding-top:0.5em;
+  }
+.user-show-information{
+  .information-container{
+    .container{
+      padding-left:10px;
+      background:white; 
+      margin-top:3em;
+      margin-left:200px;
+      width:50%;
+      .information{
+        margin-top:2em;
+        ul{
+          list-style: none;
+	  li{
+	    line-height: 180%;
+	    width:250%;
+	    label{
+	        text-align:right;
+	        margin-right:8px;
+	        color: #999;
+	        width: 100px;
+	        font-size: 12px;
+	        }  
+ 	     }
+          }
+        }
+      .user-profile-avatar{
+          margin-top:2em; 
+          padding-left:4em;
+          }  
+      } 
+    }
+    .container{
+      width:50%;
+      margin-left:200px;
+      margin-bottom:3em;
+      .title{
+	background:#f5f5f5;
+	font-size:20px;
+	color: #666;
+	padding-top:0.5em;
+	padding-bottom:0.5em;
+	margin-bottom:0;
+	}
+     }
+  }
+.user-profile-avatar{
   }

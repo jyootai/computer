@@ -1,0 +1,13 @@
+.user-show-information
+  .information-container
+    .container
+      ==render 'info'
+  .container
+    .row
+      .user-show-recent-topics
+      h2.title.text-center 最近发表的帖子
+      - if @topics.any?
+        = render partial: 'topics/topic', collection: @topics
+      - else
+        p 暂时还未发贴
+

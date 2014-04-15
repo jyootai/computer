@@ -1,39 +1,52 @@
 - provide(:title, '更改个人资料')
-.container
-  .row
-    .col-md-9
-      .profile
-        .profile-heading
-          h3.profile-title
-            p 更改个人资料
-        .profile-body
-          =form_for @user, url: settings_profile_path do |f|
-            =render 'shared/flash_messages'
-            .row
-              =f.label '姓名',class: 'control-label col-sm-2'
-              .col-sm-5
-                =f.text_field :name, class: 'form-control'
-            br    
-            .row
-              =f.label '邮箱', class: 'control-label col-sm-2'
-              .col-sm-5
-                =f.text_field :email, class: 'form-control'
-            br    
-            .row
-              =f.label '新密码', class: 'control-lable col-sm-2'
-              .col-sm-5
-                =f.password_field :password, class: 'form-control'
-            br
-            .row
-              =f.label '确认密码', class: 'control-label col-sm-2'
-              .col-sm-5
-                =f.password_field :password_confirmation, class: 'form-control'
-            br
-            .row
-              =label_tag '当前密码',nil,class: 'control-label col-sm-2'
-              .col-sm-5
-                =password_field_tag :current_password,nil, class: 'form-control'
-            br    
-            .row 
-              .col-sm-8
-                = f.submit '修改', class: 'btn btn-primary'
+.settings-profile
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        .profile
+          .profile-heading
+            h3.profile-title
+              p 更改个人资料
+          .profile-body
+            =form_for @user, url: settings_profile_path do |f|
+              =render 'shared/flash_messages'
+              .row
+                =f.label '姓名',class: 'control-label col-sm-2'
+                .col-sm-5
+                  =f.text_field :name, class: 'form-control'
+              br
+              .row
+                =f.label '专业', class: 'control-label col-sm-2'
+                .col-sm-5
+                  =f.select :professional, I18n.available_locales.map { |locale| [t("locales.#{locale}"), locale] }, { },class: 'form-control'
+              br    
+              .row
+                =f.label '邮箱', class: 'control-label col-sm-2'
+                .col-sm-5
+                  =f.text_field :email, disabled: 'disabled',class: 'form-control '
+                  p.help-block
+                    haml_safe * 此项不可更改！
+              br
+              .row
+                =f.label '个人主页', class: 'control-label col-sm-2'
+                .col-sm-5
+                  =f.text_field :bio, class: 'form-control'
+              br    
+              .row
+                =f.label '新密码', class: 'control-lable col-sm-2'
+                .col-sm-5
+                  =f.password_field :password, class: 'form-control'
+              br
+              .row
+                =f.label '确认密码', class: 'control-label col-sm-2'
+                .col-sm-5
+                  =f.password_field :password_confirmation, class: 'form-control'
+              br
+              .row
+                =label_tag '当前密码',nil,class: 'control-label col-sm-2'
+                .col-sm-5
+                  =password_field_tag :current_password,nil, class: 'form-control'
+              br    
+              .row 
+                .col-sm-8
+                  = f.submit '修改', class: 'btn btn-primary'
