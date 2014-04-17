@@ -32,6 +32,7 @@
              - else
                li.list-group-item.text-center.text-muted.empty-message
                  =t('.no_comment')
+          = paginate @comments, :theme=>'computer_theme', :params => { :anchor => 'comments' }
       .panel
         .panel-body
           - if logged_in?

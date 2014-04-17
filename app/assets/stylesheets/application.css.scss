@@ -145,6 +145,14 @@ nav{
   margin-top:-3em;
   }
 .comment-view{
+  a{
+    color:#888;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover{
+      color:#333;
+      }
+    }
   .text-muted{
     margin-left:4em;
     margin-top:-3em;

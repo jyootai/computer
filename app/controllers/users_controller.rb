@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def edit
   end
   def show
-    @topics = @user.topics
+    @topics = @user.topics.order(id: :desc)
   end
 
   def topics
