@@ -22,8 +22,6 @@ Rails.application.routes.draw do
 
   resources :topics, only: [:index, :show, :new, :create, :edit, :update], concerns: [:commentable, :likeable, :subscribable] do
     collection do
-      get 'new'
-      post 'create', as: 'post'
       get 'categoried/:category_id', to: 'topics#index', as: :categoried
       get 'search'
     end

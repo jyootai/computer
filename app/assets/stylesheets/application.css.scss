@@ -217,5 +217,15 @@ nav{
 	}
      }
   }
-.user-profile-avatar{
+.topic-tool{
+  margin-top:-2em;
+  padding-right:2em;
+  a{
+    color:#888;
+    text-decoration: none;
+    padding-left:1em;
+    &:hover{
+      color:#333;
+      }
+    }
   }

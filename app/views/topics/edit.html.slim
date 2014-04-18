@@ -1,0 +1,11 @@
+- provide(:title, t('.edit'))
+.main-post
+  .container
+    .row
+      .col-md-12
+        .topic
+          .topic-heading
+            h3.topic-title 
+              =t('.edit_post')
+          .topic-body
+            = render 'form', topic: @topic

@@ -207,6 +207,7 @@ zh-CN:
         last: 最后一页
         first: 第一页
         previous: 前一页
+        gap: ....
   settings:
     flashes:
       incorrect_password: 当前密码有误
@@ -260,6 +261,8 @@ zh-CN:
     form: 
       title: 标题
       post: 发表
+      save: 保存
+      cancel: 取消
     index:
       no_post: 没有帖子
     new:
@@ -275,3 +278,7 @@ zh-CN:
       will_comment: 在评论
     topic:
       comments_count: "%{count} 条评论"
+      comments.created_at: "最后一条评论#{time}发布"
+    edit:
+      edit: 改贴
+      edit_post: 修改帖子

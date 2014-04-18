@@ -1,4 +1,4 @@
-= form_for @topic, url: post_topics_path do |f|
+= form_for @topic,remote: true, html: {class: 'topic-form'} do |f|
   =render 'shared/flash_messages'
   .row
     .col-md-9
@@ -7,6 +7,12 @@
   .form-group
     =markdown_area f, :body
   .form-group
-    =f.submit t('.post'), class: 'btn btn-success'
+    - if topic.new_record?
+      =f.submit t('.post'), class: 'btn btn-success'
+    -else
+      =f.submit t('.save'), class: 'btn btn-success'
+      '
+      a.btn.btn-default href=topic_path(@topic)
+        = t'.cancel'
 
 

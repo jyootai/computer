@@ -21,6 +21,10 @@
                 = markdown_format @topic.body
         .topic-share
           =  social_share_button_tag(@topic.title) 
+        .topic-tool.pull-right
+          - if owner?(@topic)
+            =link_to "",edit_topic_path(@topic), :class=>"glyphicon glyphicon-pencil", :title=>"修改本帖"
+            =link_to "",href=trash_topic_path(@topic),'data-confirm'=>"确定要删除本帖吗？", :method=>:delete,:class => "glyphicon glyphicon-trash ", :title => "删除本帖"
       .panel#comments
         .panel-heading
           h3.panle-title

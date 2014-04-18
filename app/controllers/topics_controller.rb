@@ -20,11 +20,9 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic=current_user.topics.create params.require(:topic).permit(:title, :body)
+    @topic=current_user.topics.create topic_params
     @topic.user_id=current_user.id
-    if @topic.save
-      redirect_to @topic
-    else
+    if !@topic.save
       flash.now[:danger]= I18n.t('topics.flashes.failed_post')
       render 'new'
     end
@@ -32,10 +30,21 @@ class TopicsController < ApplicationController
   end
 
   def update
+     @topic.update_attributes topic_params
+  end
+
+  def trash
+     @topic = Topic.find(params[:id])
+     @topic.destroy_by(current_user)
+     redirect_to root_path
   end
 
   private
     def find_topic
       @topic=current_user.topics.find params[:id]
+    end
+
+    def topic_params
+      params.require(:topic).permit(:title,:body)
     end
 end
