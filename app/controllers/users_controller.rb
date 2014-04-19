@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :no_logged, only: [:new, :create]
   before_action :set_menu_active
-  before_action :find_user, only: [:show, :topics]
+  before_action :find_user, only: [:show, :topics,:comments]
   def new
     store_location params[:return_to]
     @user=User.new
@@ -21,7 +21,8 @@ class UsersController < ApplicationController
   def edit
   end
   def show
-    @topics = @user.topics.order(id: :desc)
+    @topics = @user.topics.order(id: :desc).limit(10)
+    @comments=@user.comments.order(created_at: :desc).limit(10)
   end
 
   def topics

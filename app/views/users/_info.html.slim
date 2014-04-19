@@ -1,6 +1,8 @@
 .row
   .col-md-4.information
     ul
+      - if @user.id==1
+        strong 管理员
       li
         label &nbsp
         span 第 #{@user.id}位会员

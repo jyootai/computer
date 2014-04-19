@@ -13,7 +13,11 @@ html
           .row
             .pull-left
               a.logo.img-responsive href=root_path
-                = image_tag "logo1.png",size: "40x37"
+                = image_tag "logo1.png",size: "40x37",:title=>"首页"
+            .website-links
+              = link_to t('.school'),"http://www.cdu.edu.cn",:target=> "_blank"
+              '
+              =link_to t('.academy'),"http://computer.cdu.edu.cn",:target=>"_blank"
             .new-post
               a.btn.btn-success href=new_topic_path
                 = t('.topic_new')

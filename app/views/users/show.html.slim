@@ -1,3 +1,4 @@
+-provide(:title,"#{@user.username}")
 .user-show-information
   .information-container
     .container
@@ -10,5 +11,15 @@
       - if @topics.any?
         = render partial: 'topics/topic', collection: @topics
       - else
-        = t('recent_not_post')
+        = t('.recent_not_post')
+
+  .container
+    .row
+      .user-show-recent-topics
+      h2.title.text-center
+        =t('.recent_comment')
+      - if @comments.any?
+        = render partial: 'comments/comment', collection: @comments
+      -else
+        =t('.recent_not_comment')
 

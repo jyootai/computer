@@ -1,9 +1,26 @@
 class TopicsController < ApplicationController
-  before_action :required_login, except: [:index,:show]
-  before_action :find_topic, only: [:edit, :update]
+  before_action :required_login, except: [:index,:show,:search]
+  before_action :find_topic, only: [:edit, :update,:trash]
   def new
     @topic = Topic.new
   end
+
+  def search
+    @topics = Topic.search(
+      query: {
+	multi_match: {
+	  query: params[:q].to_s,
+          fields: ['title', 'body']
+	}
+      },  
+      filter: {
+	term: {
+	  trashed: false
+        }
+      }
+    ).page(params[:page]).records
+  end
+
 
   def index
   #   @topic = Topic.paginate(page: params[:page], per_page: 10)

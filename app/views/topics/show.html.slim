@@ -26,7 +26,7 @@
             =link_to "",edit_topic_path(@topic), :class=>"glyphicon glyphicon-pencil", :title=>"修改本帖"
             =link_to "",href=trash_topic_path(@topic),'data-confirm'=>"确定要删除本帖吗？", :method=>:delete,:class => "glyphicon glyphicon-trash ", :title => "删除本帖"
       .panel#comments
-        .panel-heading
+        .panel-heading.panel-heading-comments
           h3.panle-title
             =t('.comment')
         .panle-body

@@ -228,6 +228,8 @@ zh-CN:
       topic_new: 创建新帖
       signup: 注册
       login: 登录
+      school: 学校首页
+      academy: 学院首页
   users:
     new:
       signup: 注册
@@ -239,6 +241,8 @@ zh-CN:
     show:
       recent_topic: 最近发表的帖子
       recent_not_post: 暂时还未发贴
+      recent_comment: 最近评论的帖子
+      recent_not_comment: 最近未评论任何帖子
     info:
       professional: 专业
       bio: 个人主页
@@ -282,3 +286,8 @@ zh-CN:
     edit:
       edit: 改贴
       edit_post: 修改帖子
+    search_form:
+      search: 搜索
+    search:
+      no_results: 抱歉，无匹配结果
+      search: "搜索 :"
