@@ -2,10 +2,14 @@
 .main-post
   .container
     .row
-      .col-md-12
-        .topic
-          .topic-heading
-            h3.topic-title 
-              =t('.edit_post')
-          .topic-body
-            = render 'form', topic: @topic
+      .col-md-7.col-md-offset-1
+        .content
+          .topic
+            .topic-heading
+              h3.topic-title 
+                =t('.edit_post')
+            .topic-body
+              = render 'form', topic: @topic
+      .col-md-4
+        .sidebar
+          =render 'sidebar_topic_tip'

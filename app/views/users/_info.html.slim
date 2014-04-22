@@ -9,15 +9,22 @@
       li
         label ID :
         strong #{@user.username}
-      li
-        label Name :
-        strong #{@user.name}
+      - if !@user.name.blank?
+        li
+          label Name :
+          strong #{@user.name}
       - if !@user.professional.blank?
         li 
           label
             = t('.professional')
             = ':'
           span #{@user.professional}
+      - if !@user.email.blank?
+        li
+          label
+            = t('.email')
+            = ':'
+          span #{@user.email}
       - if !@user.bio.blank?
         li
           label 

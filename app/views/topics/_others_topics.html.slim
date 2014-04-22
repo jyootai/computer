@@ -1,0 +1,15 @@
+.panel
+  .panel-heading
+    h4.panel-title
+      = t('.other_topic')
+  .panel-body
+    - cache [@topic, 'related_topics', locale] do
+       .list-group.list-group-computer
+         - more_like_this_topics = @topic.more_like_this
+         - if more_like_this_topics.any?
+           - more_like_this_topics.each do |topic|
+             a.list-group-item href=topic_path(topic)
+                = topic.title
+         - else
+           .list-group-item.text-center.text-muted
+             = t '.no_other_topic'

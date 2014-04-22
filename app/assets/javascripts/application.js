@@ -28,3 +28,9 @@ $(document).ready(function(){
 });$(window).bind('page:change', function() {
     $("abbr.timeago").timeago();
 });
+
+
+
+
+
+

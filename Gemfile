@@ -58,6 +58,8 @@ gem 'social-share-button', '0.1.6'
 #Elasticsearch
 gem 'elasticsearch-model','~> 0.1.0'
 gem 'elasticsearch-rails','~> 0.1.0'
+#View Components for Rails
+gem 'cells', '3.8.8'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 # Use debugger

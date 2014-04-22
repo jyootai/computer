@@ -1,7 +1,7 @@
 - provide(:title, "#{@topic.title}")
 .container
   .row
-    .col-md-9
+    .col-md-7.col-md-offset-1
       .panel
         .panel-heading
           h1.panel-title=@topic.title
@@ -11,10 +11,10 @@
                 = "@#{@topic.user.username}"
               = ' . '
               =timeago(@topic.created_at)
-          .list-group-item-avatar.comment-topic
+          .list-group-item-avatar.comment-topic.pull-right
             a href=user_link(@topic.user)
               img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
-        .panel-body
+        .panel-body.topic-body-show
           - cache [@topic, locale] do
             .list-group-item
               article.comment-body
@@ -30,7 +30,7 @@
           h3.panle-title
             =t('.comment')
         .panle-body
-          ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
+          ul.list-group.list-group-computer id="comments-for-topic-#{@topic.id}"
              - if @comments.any?
                = render @comments
              - else
@@ -43,10 +43,9 @@
              .list-group.list-group-computer
                .list-group-item.comment
                  .list-group-item-content
-                   .list-group-item-content
-                     b = current_user.name
-                     '
-                     ="@#{current_user.username}"
+                   b = current_user.name
+                   '
+                   ="@#{current_user.username}"
                  = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true  do |f|
                    .form-group
                      = markdown_area f, :body
@@ -61,5 +60,6 @@
               =t('.login')
             '
             =t('.will_comment')
-
+    .col-md-4
+      = render 'others_topics'
 

@@ -245,6 +245,7 @@ zh-CN:
       recent_not_comment: 最近未评论任何帖子
     info:
       professional: 专业
+      email: 邮箱
       bio: 个人主页
       join_time: 加入时间
   markdown:
@@ -291,3 +292,8 @@ zh-CN:
     search:
       no_results: 抱歉，无匹配结果
       search: "搜索 :"
+    sidebar_topic_tip:
+      tips_for_create_topic: 发贴说明
+    others_topics:
+      other_topic: 其它话题
+      no_other_topic: 没有其它话题
