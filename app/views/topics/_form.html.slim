@@ -1,6 +1,9 @@
 = form_for @topic,remote: true, html: {class: 'topic-form'} do |f|
   =render 'shared/flash_messages'
   .row
+    .col-md-3
+      .form-group
+        =  f.collection_select :category_id, Category.all,:id, :name, { include_blank: t('.no_category')}, class: 'form-control', tabIndex: 2
     .col-md-9
       .form-group
         =f.text_field :title,  placeholder: t('.title'), class: 'form-control'

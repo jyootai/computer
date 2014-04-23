@@ -2,7 +2,8 @@ class TopicsController < ApplicationController
   before_action :required_login, except: [:index,:show,:search]
   before_action :find_topic, only: [:edit, :update,:trash]
   def new
-    @topic = Topic.new
+    @category = Category.where ( params[:category_id].downcase).first if params[:category_id].present?
+    @topic = Topic.new category: @category
   end
 
   def search
@@ -24,7 +25,7 @@ class TopicsController < ApplicationController
 
   def index
   #   @topic = Topic.paginate(page: params[:page], per_page: 10)
-    @topics = Topic.order(id: :desc).page params[:page]
+    @topics = Topic.order(id: :desc).includes(:user,:category).page params[:page]
   end
 
   def show
@@ -62,6 +63,6 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title,:body)
+      params.require(:topic).permit(:title,:category_id,:body)
     end
 end

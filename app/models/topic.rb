@@ -2,8 +2,10 @@ class Topic < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   belongs_to :user
+  belongs_to :category
   has_many :comments, as: 'commentable'
-  validates :title, :body, presence: true
+  validates :title, :body,:category_id ,presence: true
+
 
   def destroy_by(user)
     self.destroy

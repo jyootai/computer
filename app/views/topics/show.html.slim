@@ -7,6 +7,9 @@
           h1.panel-title=@topic.title
           .text-muted.topic-show
             .info
+              -if @topic.category
+                = @topic.category.name
+                = ' . '
               a href=user_link(@topic.user)
                 = "@#{@topic.user.username}"
               = ' . '

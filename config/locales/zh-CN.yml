@@ -267,6 +267,7 @@ zh-CN:
       title: 标题
       post: 发表
       save: 保存
+      no_category: 未分类
       cancel: 取消
     index:
       no_post: 没有帖子

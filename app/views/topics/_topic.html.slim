@@ -9,6 +9,9 @@
           b = topic.title
       .text-muted
         .info
+          - if topic.category
+            = topic.category.name
+            = ' . '
           a href=user_link(topic.user)
             = topic.user.username
           = ' . '
