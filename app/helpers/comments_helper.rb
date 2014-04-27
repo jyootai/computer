@@ -6,4 +6,5 @@ module CommentsHelper
       topic_last_path(@comment.commentable)
     end
   end
+
 end

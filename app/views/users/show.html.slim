@@ -19,7 +19,7 @@
       h2.title.text-center
         =t('.recent_comment')
       - if @comments.any?
-        = render partial: 'comments/comment', collection: @comments
+        = render partial: 'users/comment', collection: @comments
       -else
         =t('.recent_not_comment')
 

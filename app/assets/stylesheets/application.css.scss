@@ -9,14 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require social-share-button
- *= require_tree .
  */
 $font-size-base: 15px;
 @import "bootstrap";
 @import "highlight";
 @import "markdown";
 @import "topics";
+@import "social-share-button";
 .markdown-area {
   .file-upload input[type=file]{
     position: absolute;
@@ -36,16 +35,14 @@ body{
   height:41px;
   line-height:40px;
   }
-
-.navbar-header{
-  width:100%;
-  }
 .new-post{
-  margin-left:40%;
-  margin-top:-2.8em;
+  width:123px;
+  margin:0 auto 0 auto;
   }
 .website-links{
+  width:188px;
   margin-left:6em;
+  height:0;
   a {
     margin-left:1em;
     text-decoration:none;
@@ -55,27 +52,73 @@ body{
       }
     }
   }
+.navbar-inner{
+  height:39px;
+  .container{
+    width:940px;
+    padding:0;
+    height:39px;
+    .logo{
+      display:block;
+      width:37px;
+      height:0;
+      }
+    }
+  }
     
 .navbar-nav {
-  margin-top:-40px;
-  margin-left:80%;
+   margin-top:-47px; 
     a{
         color:#444 !important;
         display:block;
-        float: none;
         text-decoration:none;
 	&:hover{
 	  color:black !important ;
 	  text-decoration: none;
         }
      }
+   .badge{
+     max-width:30px;
+     border-radius:0;
+     border: 1px solid #cccccc;
+     background:#f7f7f7;
+     color: #aaa;
+    font-size:15px;
+   }
+   .number{
+    font-size:15px;
+     color:blue;
+     }
+   .notification-number{
+     position-bottom:6px;
+     }
+   .open{
+     .dropdown-toggle{
+       background:white !important;
+       }
+     }
  }
+.current-user-username{
+  font-size: 14px;
+  a {
+    padding-bottom:10px !important;	  
+    &:focus{
+      background-color:white !important; 
+      }
+    }
+  }
 .dropdown-menu{
-  li{
+  min-width: 130px;
+  li{ 
+    height:24px;
      a{
+       font-size: 13px;
+       padding-top:3px;
+       padding-bottom:3px;
+       height:24px;
        &:hover{     
-      background:#038543;
-      color:white !important;
+         background:#038543 !important;
+         color:white !important;
       }
     }
   }
@@ -177,6 +220,7 @@ nav{
     .body{
       padding-bottom:3px;
       padding-right:8px;
+      font-size:13px;
       }
   }
 .list-index{
@@ -296,3 +340,29 @@ nav{
       }
     }
   }
+.notifications{
+  padding:10px;
+  .notifications-tool{
+    padding-bottom:10px;
+    background:white;
+    .btn-danger{
+      margin-top:0;
+      a{
+        color:white;
+	text-decoration:none;
+        }	
+      }
+    .pull-right{
+      margin-top:12px;
+      font-size:14px;
+      color:#333;
+      font-weight: bold;
+      margin-right:20px;
+      } 
+    }
+    .list-group-item{
+      border-left:none;
+      border-right:none;
+      }
+  }
+

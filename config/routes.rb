@@ -1,3 +1,12 @@
+class AdminConstraint
+  def self.matches?(request)
+    if request.session[:user_id]
+      user = User.find request.session[:user_id]
+      user && user.admin?
+    end
+  end
+end
+
 Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
@@ -88,6 +97,9 @@ Rails.application.routes.draw do
     member do
       get :topics
     end
+  end
+  constraints(AdminConstraint) do
+    mount Resque::Server.new, at: 'resque'
   end
 
 end

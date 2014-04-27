@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -59,7 +59,15 @@ gem 'social-share-button', '0.1.6'
 gem 'elasticsearch-model','~> 0.1.0'
 gem 'elasticsearch-rails','~> 0.1.0'
 #View Components for Rails
-gem 'cells', '3.8.8'
+gem 'cells', '~>3.9.1'
+#Background jobs
+gem 'resque', '~> 1.25.1'
+gem 'resque_mailer', '~> 2.2.6'
+#Nokogiri XML parser
+gem 'nokogiri', '~> 1.6.1'
+#Redis
+gem 'redis', '~> 3.0.7'
+gem 'hiredis', '~> 0.4.5'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 # Use debugger

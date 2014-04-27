@@ -2,9 +2,12 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic secure: true, default: 'wavatar', rating: 'G', size: 48
   mount_uploader :avatar, AvatarUploader
+
   has_many :topics, dependent: :destroy 
   has_many :comments, dependent: :destroy
+  has_many :notifications, dependent: :delete_all
   has_many :attachments, dependent: :delete_all
+
   has_secure_password
   before_save{self.email=email.downcase}
   before_save{self.username=username.downcase}

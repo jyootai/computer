@@ -1,0 +1,12 @@
+- cache [comment, locale] do
+  li.list-group-item 
+    .list-group-item-avatar
+      img.img-rounded alt="avatar" src=comment.commentable.user.avatar.normal.url
+    .list-index
+      .list-group-item-heading
+        a href=comment_link(comment)
+          b = comment_title(comment)
+        '
+        = timeago(comment.created_at)
+      .text-muted
+        = truncate comment.body, length: 140

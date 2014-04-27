@@ -1,0 +1,21 @@
+-provide(:title, t('.notifications_title'))
+.container
+  .col-md-10.col-md-offset-1
+    .panel
+      .notifications
+        .notifications-tool
+          h3.btn.btn-danger.btn-sm
+            =link_to t('.clear_all'), clear_notifications_path ,"data-remote"=>"true" ,"data-method"=>"delete", "data-confirm"=>t('.delete_all_confirm')
+          h3.pull-right
+            =t('.notifications')
+        .notifications-table
+          ul.list-group
+            - if @notifications.any?
+              - @notifications.each do |notification|
+                = render "notifications/notification/#{notification.name}", notification: notification
+            - else
+              li.list-group-item.text-center.text-muted.empty-message
+                = t '.no_notifications'
+        = paginate @notifications, theme:'computer_theme'
+
+- current_user.notifications.unread.where(id: @notifications.pluck(:id)).update_all(read: true)

@@ -18,6 +18,7 @@ module Computer
     # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'Beijing'
     config.i18n.default_locale = "zh-CN"
+    I18n.config.enforce_available_locales = false
     config.i18n.available_locales = ['软件工程', '网络工程','数字媒体技术','计算机科学与技术','信息与计算科学']
     config.assets.precompile+=%w(*.png *.jpg *.jpeg *.gif)
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

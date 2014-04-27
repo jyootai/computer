@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422095144) do
+ActiveRecord::Schema.define(version: 20140425133759) do
 
   create_table "attachments", force: true do |t|
     t.integer  "user_id"
@@ -41,6 +41,31 @@ ActiveRecord::Schema.define(version: 20140422095144) do
   end
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "notifications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.string   "name"
+    t.boolean  "read",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["subject_id", "subject_type"], name: "index_notifications_on_subject_id_and_subject_type"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "subscribable_id"
+    t.string   "subscribable_type"
+    t.integer  "status",            default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["subscribable_id", "subscribable_type"], name: "index_subscriptions_on_subscribable_id_and_subscribable_type"
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
   create_table "topics", force: true do |t|
     t.string   "title"

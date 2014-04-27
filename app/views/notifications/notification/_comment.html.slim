@@ -1,0 +1,19 @@
+- cache [notification, locale] do
+  - comment = notification.subject
+  li.list-group-item id="notification_#{notification.id}" class=('read' if notification.read)
+    a.btn.glyphicon.glyphicon-remove.pull-right href=notification_path(notification) data-remote="true" data-method="delete"
+    .list-group-item-avatar
+      img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
+    .list-index
+      .list-group-item-heading
+        a href=user_link(comment.user)
+          b = comment.user.username
+        '
+        = t '.commented_on'
+        '
+        a href=comment_link(comment)
+          b = comment_title(comment)
+        '
+        = timeago(comment.created_at)
+      .text-muted
+        = truncate comment.body, length: 140

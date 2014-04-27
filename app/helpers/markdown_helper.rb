@@ -19,7 +19,7 @@ module MarkdownHelper
 
     def process(text)
       text.gsub!(/@([a-z0-9][a-z0-9-]*)/i) { |match|
-        %Q|<a href="/~#{$1}">#{match}</a>|
+        %Q|<a href="/#{$1}">#{match}</a>|
       }
 
       text.gsub!(/#(\d+)/) { |match|

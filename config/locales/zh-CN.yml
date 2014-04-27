@@ -260,6 +260,16 @@ zh-CN:
       login: 登录
       username: 用户名
       password: 密码
+  notifications:
+    index:
+      notifications_title: 提醒
+      notifications: 消息提醒
+      no_notifications: 没有消息
+      clear_all: 清空
+      delete_all_confirm: 清空所有?
+    notification:
+      comment:
+        commented_on: 评论了你的帖子：
   topics:
     flashes:
       failed_post: 请填写完整，标题和肉容不能为空
@@ -298,3 +308,4 @@ zh-CN:
     others_topics:
       other_topic: 其它话题
       no_other_topic: 没有其它话题
+

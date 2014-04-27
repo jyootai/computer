@@ -1,10 +1,13 @@
 class Topic < ActiveRecord::Base
+  include Subscribable
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   belongs_to :user
-  belongs_to :category
-  has_many :comments, as: 'commentable'
+  belongs_to :category,counter_cache: true
+  has_many :comments, as: 'commentable',dependent: :delete_all
+
   validates :title, :body,:category_id ,presence: true
+
 
 
   def destroy_by(user)
@@ -27,4 +30,5 @@ class Topic < ActiveRecord::Base
       }
     ).limit(num).records.to_a rescue []
   end
+
 end

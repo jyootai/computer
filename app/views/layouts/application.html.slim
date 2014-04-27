@@ -8,11 +8,9 @@ html
     = csrf_meta_tags 
   body
     nav.navbar.navbar-static-top.navbar-inverse
-      .container
-        .navbar-header
-          .row
-            .pull-left
-              a.logo.img-responsive href=root_path
+      .navbar-inner
+        .container
+            a.logo.img-responsive href=root_path
                 = image_tag "logo1.png",size: "40x37",:title=>"首页"
             .website-links
               = link_to t('.school'),"http://www.cdu.edu.cn",:target=> "_blank"
@@ -21,18 +19,26 @@ html
             .new-post
               a.btn.btn-success href=new_topic_path
                 = t('.topic_new')
+
             ul.nav.navbar-nav.navbar-right
               - if logged_in?
+                li.notification-number 
+                  a href=notifications_path
+                    - if unread_notifications_count==0
+                      .badge=unread_notifications_count
+                    - else
+                      .badge.number =  unread_notifications_count > 99 ? '99+' : unread_notifications_count
+                li.current-user-username
                   a.dropdown-toggle data-toggle="dropdown" href="#"
                     =current_user.username
                     '
                     b.caret
-                  ul.dropdown-menu.dropdown-menu-right
+                  ul.dropdown-menu
                     li
                       a href=user_path(current_user.username)
                         = t('.profile')
                     li.divider     
-                    li    
+                    li  
                       a href="#"
                         = t('.note')
                     li
