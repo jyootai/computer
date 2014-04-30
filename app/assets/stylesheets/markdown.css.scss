@@ -13,12 +13,33 @@
 
   }
 
-  .nav-tabs {
+  .pills {
     padding: $padding-base-horizontal $padding-base-horizontal 0;
+    font-size:12px;
+    border-bottom: 1px solid #cccccc;
+    margin-bottom:0;
+    padding:12px;
+    li{
+      display: inline;
+      }
 
     li a {
       padding: $padding-base-vertical $padding-base-horizontal;
+      color: #666;
+      margin-right: 6px;
+      padding: 0 5px;
     }
+    .active{
+      a{
+	border: 1px solid #ddd;
+	text-decoration: none;
+
+        border-bottom: 1px solid #cccccc;
+        border-radius:8px;
+        } 	      
+      
+      }
+
   }
 
   textarea {
@@ -26,7 +47,6 @@
     padding: $padding-base-vertical $padding-base-horizontal;
     border: none;
     resize: vertical;
-    height: 8em;
     @include box-shadow(none);
 
     &:focus {
@@ -61,8 +81,9 @@
   }
 
   .preview {
-    min-height: 8em;
+    min-height: 400px;
     padding: $padding-base-vertical $padding-base-horizontal;
+    font-size:13px;
   }
 }
 

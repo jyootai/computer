@@ -5,7 +5,7 @@ require 'elasticsearch/rails/instrumentation'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+Bundler.require *Rails.groups(:assets => %w(production development test))
 
 module Computer
   class Application < Rails::Application

@@ -11,3 +11,7 @@
           =timeago(comment.created_at)
       article.comment-body
         = markdown_format comment.body
+    .comment-action
+      .pull-right
+        a.btn.glyphicon.glyphicon-comment  data-reply-to="@#{comment.user.username} ##{comment.id}"  title="回复此楼"
+        

@@ -8,8 +8,21 @@
             h3.profile-title
               = t('.profile_update')
           .profile-body
-            =form_for @user, url: settings_profile_path do |f|
+            =form_for @user, url: settings_profile_path , html: {multipart: true}do |f|
               =render 'shared/flash_messages'
+              .row 
+                =f.label :avatar, class: 'control-label col-sm-2'
+                .col-sm-5
+                  .image
+                    img alt="avatar" src=current_user.avatar.bigger.url
+                  .uploader
+                    br
+                    =f.file_field :avatar
+                    .checkbox
+                      label
+                        =f.check_box :remove_avatar
+                        '
+                        = t('.remove_avatar')
               .row
                 =f.label :name,class: 'control-label col-sm-2'
                 .col-sm-5

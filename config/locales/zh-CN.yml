@@ -197,6 +197,7 @@ zh-CN:
         username: 用户名
         email: 邮箱
         name: 姓名
+        avatar: 头像
         professional: 专业
         bio: 个人主页
         password_confirmation: 密码确认
@@ -219,6 +220,7 @@ zh-CN:
         save_changes: 保存修改
         not_modify:  此项不可更改
         must: 此项必填
+        remove_avatar: 移除当前头像
   layouts:
     application:
       profile: 个人资料

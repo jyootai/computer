@@ -54,3 +54,12 @@ $(document).on 'change', '.markdown-area .file-upload input[type=file]', (event)
 
   # Clear input, or ujs submit will be abort.
   $(this).replaceWith($(this).val('').clone())
+
+
+
+
+
+$(document).on 'click', '.comment [data-reply-to]', ->
+  textarea = $('#new_comment textarea')
+  textarea.focus()
+  textarea.val(textarea.val() + $(this).data('reply-to'))

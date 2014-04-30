@@ -2,20 +2,18 @@
   =render 'shared/flash_messages'
   .row
     .col-md-3
-      .form-group
+      .form-group.node-select
         =  f.collection_select :category_id, Category.all,:id, :name, { include_blank: t('.no_category')}, class: 'form-control', tabIndex: 2
     .col-md-9
-      .form-group
+      .form-group.title
         =f.text_field :title,  placeholder: t('.title'), class: 'form-control'
-  .form-group
-    =markdown_area f, :body
-  .form-group
-    - if topic.new_record?
-      =f.submit t('.post'), class: 'btn btn-success'
-    -else
-      =f.submit t('.save'), class: 'btn btn-success'
-      '
-      a.btn.btn-default href=topic_path(@topic)
-        = t'.cancel'
+  =markdown_area f, :body
+  - if topic.new_record?
+    =f.submit t('.post'), class: 'btn btn-success'
+  -else
+    =f.submit t('.save'), class: 'btn btn-success'
+    '
+    a.btn.btn-default href=topic_path(@topic)
+      = t'.cancel'
 
 

@@ -16,15 +16,6 @@ $font-size-base: 15px;
 @import "markdown";
 @import "topics";
 @import "social-share-button";
-.markdown-area {
-  .file-upload input[type=file]{
-    position: absolute;
-    width: 100%;
-    margin-top: 0;
-    bottom: 0;
-    cursor: pointer;
-    }
-  }
 body{
   background-color:#eee;
   }
@@ -83,10 +74,8 @@ body{
      border: 1px solid #cccccc;
      background:#f7f7f7;
      color: #aaa;
-    font-size:15px;
    }
    .number{
-    font-size:15px;
      color:blue;
      }
    .notification-number{
@@ -200,7 +189,22 @@ nav{
 	padding:1em;
 	.topic-title{
 	  margin-top:0; 
+	  font-size:18px;
 	  margin-bottom:9px;
+	  }
+	.node-select{
+          font-size:13px;
+	  .form-control{
+	    padding-top:0;
+	    padding-bottom:0;
+	    height:30px;
+	    }
+	  }
+	.title{
+	  input{
+            font-size:12px;
+	    height:30px;
+    	    }
 	  }
         }
     }
@@ -210,6 +214,7 @@ nav{
   }
 .topic_tip{
   .title{
+    margin-top:0;
     background:#f5f5f5;
     font-size:12px;
     color: #666;
@@ -259,6 +264,9 @@ nav{
     padding-top:1em;
     margin-left:4em;
     }
+  }
+.comment-action{
+  height:30px;
   }
 .list-group-computer{
   .list-group-item{

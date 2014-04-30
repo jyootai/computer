@@ -7,7 +7,8 @@
           .topic
             .topic-heading
               h3.topic-title 
-                =t('.new_post')
+                strong
+                  =t('.new_post')
             .topic-body
               = render 'form', topic: @topic
       .col-md-4
