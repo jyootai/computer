@@ -22,8 +22,9 @@
               .form-group
                 =f.label :password_confirmation,class: 'control-label'
                 =f.password_field :password_confirmation,placeholder: t('.password_confirmation'),class: 'form-control'
-              .form-group
-              =f.submit t('.create_account'),class: 'btn btn-success'
+              br
+              .form-group.text-center.submit-box
+                =f.submit t('.create_account'),class: 'btn btn-success'
        
 
 

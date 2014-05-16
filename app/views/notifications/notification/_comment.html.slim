@@ -3,7 +3,8 @@
   li.list-group-item id="notification_#{notification.id}" class=('read' if notification.read)
     a.btn.glyphicon.glyphicon-remove.pull-right href=notification_path(notification) data-remote="true" data-method="delete"
     .list-group-item-avatar
-      img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
+      a href=user_link(comment.user)
+        img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
     .list-index
       .list-group-item-heading
         a href=user_link(comment.user)

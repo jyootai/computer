@@ -17,6 +17,8 @@
               .form-group
                 =label_tag t('.password')
                 =password_field_tag :password, nil, placeholder: t('.password'), class: 'form-control'
-              .form-group
-              =submit_tag t('.login'), class: 'btn btn-success'
+              br
+
+              .form-group.text-center.submit-box
+                =submit_tag t('.login'), class: 'btn btn-success'
 

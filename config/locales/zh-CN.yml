@@ -272,6 +272,8 @@ zh-CN:
     notification:
       comment:
         commented_on: 评论了你的帖子：
+      mention:
+        mentioned_you_on: 提到了你在：
   topics:
     flashes:
       failed_post: 请填写完整，标题和肉容不能为空
@@ -279,7 +281,7 @@ zh-CN:
       title: 标题
       post: 发表
       save: 保存
-      no_category: 未分类
+      no_category: 选择节点
       cancel: 取消
     index:
       no_post: 没有帖子

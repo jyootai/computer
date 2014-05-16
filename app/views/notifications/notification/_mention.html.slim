@@ -1,20 +1,20 @@
 - cache [notification, locale] do
   - comment = notification.subject
-  li.list-group-item.notification id="notification_#{notification.id}" class=('read' if notification.read)
-    a.btn.list-group-item-remove href=notification_path(notification) data-remote="true" data-method="delete"
-      i.fa.fa-times
-
-    a.list-group-item-link href=comment_link(comment)
-      .list-group-item-avatar
+  li.list-group-item id="notification_#{notification.id}" class=('read' if notification.read)
+    a.btn.glyphicon.glyphicon-remove.pull-right href=notification_path(notification) data-remote="true" data-method="delete"
+    .list-group-item-avatar
+      a href=user_link(comment.user)
         img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
-      .list-group-item-content
-        .list-group-item-heading
-          b = comment.user.name
-          '
-          = t '.mentioned_you_on'
-          '
+    .list-index
+      .list-group-item-heading
+        a href=user_link(comment.user)
+          b = comment.user.username
+        '
+        = t '.mentioned_you_on'
+        '
+        a href=comment_link(comment)
           b = comment_title(comment)
-          '
-          = time_ago_tag comment.created_at
-        .text-muted
-          = truncate comment.body, length: 140
+        '
+        = timeago(comment.created_at)
+      .text-muted
+        = truncate comment.body, length: 140
