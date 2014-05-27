@@ -8,53 +8,58 @@ html
     = csrf_meta_tags 
   body
     nav.navbar.navbar-static-top.navbar-inverse
-      .navbar-inner
-        .container
-            a.logo.img-responsive href=root_path
-                = image_tag "cloud.png",size: "69x45",:title=>"首页"
-            .website-links
-              = link_to t('.school'),"http://www.cdu.edu.cn",:target=> "_blank"
-              '
-              =link_to t('.academy'),"http://computer.cdu.edu.cn",:target=>"_blank"
-            .new-post
-              a.btn.btn-success href=new_topic_path
-                = t('.topic_new')
+      .container
+        .row
+          .navbar-logo
+            a.logo href=root_path
+              = CONFIG['title']
+          ul.nav.navbar-nav.navbar-right
+            - if logged_in?
+              li.notification-number 
+                a href=notifications_path
+                  - if unread_notifications_count==0
+                    .badge=unread_notifications_count
+                  - else
+                    .badge.number =  unread_notifications_count > 99 ? '99+' : unread_notifications_count
+              li.current-user-username
+                a.dropdown-toggle data-toggle="dropdown" href="#"
+                  =current_user.username
+                  '
+                  b.caret
+                ul.dropdown-menu
+                  li class=('active' if controller_name == 'users' )
+                    a href=user_path(current_user.username)
+                      = t('.profile')
+                  li.divider     
+                  li  
+                    a href="#"
+                      = t('.note')
+                  li class=('active' if controller_name == 'profiles')
+                    a href=settings_profile_path
+                      =t('.settings')
+                  li.divider    
+                  - if current_user.admin?
+                    li
+                      a href=admin_root_path
+                        =t('.admin_management')
+                    li.divider
+                  li
+                    a href=logout_path data-method="delete"
+                      =t('.logout')
+            - else
+              li
+                a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath)) 
+                  =t('.signup')
+              li
+                a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                  =t('.login')
+          .new-post
+            a.btn.btn-success href=new_topic_path
+              = t('.topic_new')
+          .website-links
+            = link_to t('.school'),"http://www.cdu.edu.cn",:target=> "_blank"
+            '
+            =link_to t('.academy'),"http://computer.cdu.edu.cn",:target=>"_blank"
 
-            ul.nav.navbar-nav.navbar-right
-              - if logged_in?
-                li.notification-number 
-                  a href=notifications_path
-                    - if unread_notifications_count==0
-                      .badge=unread_notifications_count
-                    - else
-                      .badge.number =  unread_notifications_count > 99 ? '99+' : unread_notifications_count
-                li.current-user-username
-                  a.dropdown-toggle data-toggle="dropdown" href="#"
-                    =current_user.username
-                    '
-                    b.caret
-                  ul.dropdown-menu
-                    li
-                      a href=user_path(current_user.username)
-                        = t('.profile')
-                    li.divider     
-                    li  
-                      a href="#"
-                        = t('.note')
-                    li
-                      a href=settings_profile_path
-                        =t('.settings')
-                    li.divider    
-                    li
-                      a href=logout_path data-method="delete"
-                        =t('.logout')
-              - else
-                li
-                  a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath)) 
-                    =t('.signup')
-                li
-                  a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
-                    =t('.login')
-
-  = yield
+= yield
 

@@ -213,6 +213,16 @@ zh-CN:
     flashes:
       incorrect_password: 当前密码有误
       successfully_updated: 资料修改成功
+      successfully_created_node: 成功创建节点
+      successfully_destroied_node: 成功删除节点
+      successfully_updated_topic: 成功更新话题信息
+      successfully_trashed_topic: 成功删除话题
+      successfully_restored_topic: 成功还原话题
+      successfully_updated_comment: 成功更新评论信息
+      successfully_trashed_comment: 删除评论成功
+      successfully_restored_comment: 成功还原评论
+      successfully_locked: 成功锁定用户
+      successfully_unlocked: 成功解除锁定
     profiles:
       show:
         profile_update: 更改个人资料
@@ -232,6 +242,15 @@ zh-CN:
       login: 登录
       school: 学校首页
       academy: 学院首页
+      admin_management: 管理模块
+    admin:
+      admin: Admin
+      users: 用户
+      categories: 分类
+      topics: 话题
+      comments: 评论
+      attachments: 附件
+      
   users:
     new:
       signup: 注册
@@ -250,6 +269,67 @@ zh-CN:
       email: 邮箱
       bio: 个人主页
       join_time: 加入时间
+  admin:
+    dashboard:
+      show: 
+        dashboard: 管理模块
+    users:
+      show:
+        save_changes: 保存修改
+        permanently_delete_confirm: 确定删除?
+        permanently_delete: 删除用户
+        created_at: 该用户创建于： 
+        lock: 锁定
+        unlock: 解除锁定
+      index:
+        users: 全部用户
+        normal: 正常
+        locked: 锁定
+    categories: 
+      index:
+        categories: 所有节点
+        new_category: 新建节点
+        topics_count: " 话题数量: %{count}"
+      form:
+        name: 节点名称
+        description: 节点描述
+        save_changes: 保存修改
+        create_category: 新建节点
+        permanently_delete: 删除节点
+        permanently_delete_confirm: 确定删除？
+      show:
+        topics: 话题总数
+      new:
+        new_category: 新建节点
+    topics:
+      show:
+        save_changes: 保存修改
+        delete: 删除
+        delete_confirm: 确认删除?
+        user: 用户
+        created_at: 发表于：
+        comments: 评论数：
+      index:
+        topics: 所有帖子
+        normal: 正常
+        delete: 已删除
+    comments:
+      index:
+        comments: 所有评论
+        normal: 正常
+        delete: 已删除
+      show:
+        comments: 评论
+        save_changes: 保存修改
+        delete: 删除
+        delete_confirm: 确认删除
+        commentable: 评论的帖子：
+        user: 用户
+        created_at: 评论于：
+    attachments:
+      index:
+        delete_confirm: 确认删除?
+        attachments: 附件
   markdown:
     area:
       edit: 编辑
@@ -296,6 +376,7 @@ zh-CN:
       login: 登录
       or: 或者
       will_comment: 在评论
+      your_account_had_been_locked: 你的帐号已经被锁定
     topic:
       comments_count: "%{count} 条评论"
       comments.created_at: "最后一条评论#{time}发布"

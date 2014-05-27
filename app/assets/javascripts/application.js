@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //= require jquery
+//= require jquery.atwho
 //= require jquery_ujs
 //= require social-share-button
 //= require turbolinks
@@ -22,15 +23,15 @@
 //  $("abbr.timeago").timeago();
 //});
 
- 
+$(function(){
+  $('#inputor').atwho({
+  at: "@",
+  data: ["one", "two", "three"]
+  });
+});
 $(document).ready(function(){
   $("abbr.timeago").timeago();
 });$(window).bind('page:change', function() {
     $("abbr.timeago").timeago();
 });
-
-
-
-
-
 

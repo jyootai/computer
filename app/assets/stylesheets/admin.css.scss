@@ -1,0 +1,12 @@
+.navbar-nav{
+  .active{
+    a{
+	padding-bottom:13px;
+        color:#d71900 !important;
+	background:white !important;
+	&:hover{
+          color:#d71900 !important;
+          }
+      }
+    }
+  }

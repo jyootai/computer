@@ -65,6 +65,9 @@ gem 'resque', '~> 1.25.1'
 gem 'resque_mailer', '~> 2.2.6'
 #Nokogiri XML parser
 gem 'nokogiri', '~> 1.6.1'
+
+gem 'jquery-atwho-rails', '~> 0.4.11'
+
 #Redis
 gem 'redis', '~> 3.0.7'
 gem 'hiredis', '~> 0.4.5'

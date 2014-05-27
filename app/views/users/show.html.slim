@@ -11,7 +11,8 @@
       - if @topics.any?
         = render partial: 'topics/topic', collection: @topics
       - else
-        = t('.recent_not_post')
+        .list-group-item.text-center
+          = t('.recent_not_post')
 
   .container
     .row
@@ -21,5 +22,6 @@
       - if @comments.any?
         = render partial: 'users/comment', collection: @comments
       -else
-        =t('.recent_not_comment')
+        .list-group-item.text-center
+          =t('.recent_not_comment')
 

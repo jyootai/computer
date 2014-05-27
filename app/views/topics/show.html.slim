@@ -43,16 +43,19 @@
       .panel
         .panel-body
           - if logged_in?
-             .list-group.list-group-computer
-               .list-group-item.comment
-                 .list-group-item-content
-                   b = current_user.name
-                   '
-                   ="@#{current_user.username}"
-                 = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true  do |f|
-                   .form-group
-                     = markdown_area f, :body
-                   =f.submit t('.post_comment'), class: 'btn btn-success'
+            -unless current_user.locked?
+              .list-group.list-group-computer
+                .list-group-item.comment
+                  .list-group-item-content
+                    b = current_user.name
+                    '
+                    ="@#{current_user.username}"
+                  = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true  do |f|
+                    .form-group
+                      = markdown_area f, :body
+                    =f.submit t('.post_comment'), class: 'btn btn-success'
+            -else
+              = t'.your_account_had_been_locked'
           - else
             a href=signup_path(return_to: request.fullpath)
               =t('.signup')

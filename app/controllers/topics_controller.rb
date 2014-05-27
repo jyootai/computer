@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :required_login, except: [:index,:show,:search]
+  before_action :required_login, :required_no_locked, except: [:index,:show,:search]
   before_action :find_topic, only: [:edit, :update,:trash]
   def new
     @category = Category.where ( params[:category_id].downcase).first if params[:category_id].present?

@@ -1,17 +1,16 @@
-.root-index
-  .container
-    .row
-      .col-md-8
-        .post
-          .post-heading
-            =render 'shared/flash_messages'
-            -if @topics.any?
-              =render @topics
-            -else
-              p
-                =t('.no_post')
-        = paginate @topics, :theme=> 'computer_theme'
-      .col-md-3
-        = render 'search_form'
-        .sidebar
-          = render_cell :topics, :sidebar_statistics
+.container
+  .row
+    .col-md-8
+      .post
+        .post-heading
+          =render 'shared/flash_messages'
+          -if @topics.any?
+            =render @topics
+          -else
+            p
+              =t('.no_post')
+      = paginate @topics, :theme=> 'computer_theme'
+    .col-md-3
+      = render 'search_form'
+      .sidebar
+        = render_cell :topics, :sidebar_statistics

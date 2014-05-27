@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   validates :email,presence: true,
 	           format: {with: VALID_EMAIL},
 		   uniqueness: { case_sensitive: false }
+  scope :locked, -> { where.not(locked_at: nil) }
+  scope :unlocked, -> { where(locked_at: nil) }
 
   def remember_token 
     [id, Digest::SHA512.hexdigest(password_digest)].join('$')
@@ -26,4 +28,19 @@ class User < ActiveRecord::Base
     (user && Rack::Utils.secure_compare(user.remember_token, token)) ? user : nil
   end
 
+  def admin?
+    CONFIG['admin_emails'] && CONFIG['admin_emails'].include?(email)
+  end
+
+  def locked?
+    locked_at.present?
+  end
+
+  def lock
+    update_attribute :locked_at, current_time_from_proper_timezone
+  end
+
+  def unlock
+    update_attribute :locked_at, nil
+  end
 end

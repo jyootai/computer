@@ -1,5 +1,6 @@
 class Topic < ActiveRecord::Base
   include Subscribable
+  include Trashable
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   belongs_to :user

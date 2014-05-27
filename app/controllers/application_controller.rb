@@ -14,7 +14,13 @@ class ApplicationController < ActionController::Base
   def required_login
     unless logged_in?
       flash[:warning] = '请先登录'
-      redirect_to login_url(return_to: (request.fullpath if request.get?))
+      redirect_to login_url
+    end
+  end
+
+  def required_no_locked
+    if logged_in? and current_user.locked?
+      raise AccessDenied
     end
   end
 
@@ -90,40 +96,6 @@ class ApplicationController < ActionController::Base
       httponly: true
     }
   end
-  def perform(comment_id)
-    comment = Comment.find comment_id
-    create_mention_notification(comment)
-    create_comment_notification(comment)
-  end
-  def create_comment_notification(comment)
-    if comment.commentable.respond_to? :subscribed_users
-      users = comment.commentable.subscribed_users - comment.mention_users - [comment.user]
-      users.each do |user|
-        Notification.create(user: user,
-	  		subject: comment,
-			name: 'comment')
-      end
-    end
-  end
-  def mention_users
-    return @menton_users if defined?(@menton_users)
-    doc = Nokogiri::HTML.fragment(markdown(content))
-    usernames = doc.search('text()').map { |node|
-      unless node.ancestors('a, pre, code').any?
-	node.text.scan(/@([a-z0-9][a-z0-9-]*)/i).flatten
-      end
-    }.flatten.compact.uniq
-    @menton_users = User.where(username: usernames)
-  end
-
-  def create_mention_notification(comment)
-     users = comment.mention_users - [comment.user]
-     users.each do |user|
-       Notification.create(user: user,
-			   subject: comment,
-			   name: 'mention')
-     end
-   end
 	
 
 end

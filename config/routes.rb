@@ -63,8 +63,18 @@ Rails.application.routes.draw do
     resource :profile, only: [:show, :update]
   end
 
-  namespace :admin do
+  scope path: '~admin', module: 'admin', as: 'admin' do
+    resources :dashboard, only: [:show]
     root to: 'dashboard#show'
+    resources :users,only: [:index,:show,:update,:destroy] do 
+      collection do
+	get :locked
+      end
+      member do
+	patch :lock
+	delete :lock,action: 'unlock'
+      end
+    end
 
 
     resources :categories, except: [:edit]

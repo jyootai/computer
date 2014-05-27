@@ -12,28 +12,47 @@
  */
 $font-size-base: 15px;
 @import "bootstrap";
+@import "jquery.atwho";
 @import "highlight";
 @import "markdown";
 @import "topics";
 @import "social-share-button";
+@import "admin";
 body{
-  background-color:#eee;
+  background-color:rgba(92, 184, 92, 0.38);
   }
 .navbar {
   min-height:8px;
   background-color:white;
   border-color:rgba(153, 153, 153, 0.4);
   height:41px;
-  line-height:40px;
+  }
+.navbar-logo{
+  float:left;
   }
 .new-post{
-  width:123px;
-  margin:0 auto 0 auto;
+  display:block;
+  float:right;
+  a{
+    line-height:15px;
+    margin-top:4px;
+    }
+  }
+.navbar-logo{
+  font-size:26px;
+  a {
+    text-decoration: none;
+    color:#038543 ;
+    &:hover{
+      text-decoration: none ;
+      color:green ;
+      }
+    }
   }
 .website-links{
-  width:188px;
+  line-height:40px;
   margin-left:6em;
-  height:0;
+  float:left;
   a {
     margin-left:1em;
     text-decoration:none;
@@ -43,22 +62,19 @@ body{
       }
     }
   }
-.navbar-inner{
-  height:39px;
-  .container{
-    width:940px;
-    padding:0;
-    height:39px;
-    .logo{
-      display:block;
-      width:37px;
-      height:0;
+.admin-top{
+  .active{
+    a{
+      color: white;
+      &:link{	    
+        background-color:white !important;
+        }
       }
     }
   }
     
 .navbar-nav {
-   margin-top:-47px; 
+   margin-top:-9px; 
     a{
         color:#444 !important;
         display:block;
@@ -76,10 +92,10 @@ body{
      color: #aaa;
    }
    .number{
-     color:blue;
+     color:#f7f7f7;
+     background:#d71900;
      }
    .notification-number{
-     position-bottom:6px;
      }
    .open{
      .dropdown-toggle{
@@ -97,7 +113,20 @@ body{
     }
   }
 .dropdown-menu{
+  .active{
+    a{
+      background: #038543 !important; 
+      color:white !important;
+      &:hover{
+        color:white !important;
+	}
+      }
+    }
   min-width: 130px;
+  .divider{
+    margin-top:3px;
+    margin-bottom:3px;
+    }
   li{ 
     height:24px;
      a{
@@ -235,9 +264,6 @@ nav{
 .list-index{
   padding-left:4em;
   margin-top:-3em;
-  }
-.root-index{
-  margin-top:3em;
   }
 .post-personal{
   padding-top:17px;

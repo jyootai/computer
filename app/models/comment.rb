@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  include Trashable
   include MarkdownHelper
   paginates_per 25
 
@@ -10,7 +11,7 @@ class Comment < ActiveRecord::Base
   validates :commentable, :user, presence: true
   validates :body, presence: true
 
-  after_create :increment_counter_cache,:create_mention_notification,:create_comment_notification
+  after_create :increment_counter_cache,:create_mention_notification,:create_comment_notification, :floor
   def increment_counter_cache
     if commentable.has_attribute? :comments_count
       commentable.class.update_counters commentable.id, comments_count: 1  
@@ -46,11 +47,16 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  def add_floor_num
 
+  end
 
+  def floor
     
-
-
-
+    if commentable.comments_count == 0        
+      num  =  0
+    else
+      num=1
+    end
+  end
 end
-

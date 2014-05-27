@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425133759) do
+ActiveRecord::Schema.define(version: 20140520113633) do
 
   create_table "attachments", force: true do |t|
     t.integer  "user_id"
@@ -32,15 +32,15 @@ ActiveRecord::Schema.define(version: 20140425133759) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
     t.text     "body"
     t.integer  "links_count",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.boolean  "trashed",          default: false
   end
 
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "notifications", force: true do |t|
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140425133759) do
     t.string   "avatar"
     t.string   "professional"
     t.string   "sex"
+    t.datetime "locked_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
