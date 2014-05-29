@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_secure_password
   before_save{self.email=email.downcase}
   before_save{self.username=username.downcase}
+  validates :password, length: {in: 6..20} 
   validates :username, uniqueness: {case_sensitive: false},presence: true,format: { with: /\A[a-z0-9][a-z0-9-]*\z/i }
   VALID_EMAIL=/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,presence: true,

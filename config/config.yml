@@ -35,4 +35,4 @@ production:
   <<: *default
 
   admin_emails:
-    - admin@example.com
+    - jyootg@gmail.com
